@@ -8,11 +8,11 @@ A fast, accurate, and modern Chrome Extension (Manifest V3) that converts **Sing
 
 ## ✨ Features
 
-<img width="1098" height="353" alt="Screenshot 2026-09-27 at 3 06 09 PM" src="https://github.com/user-attachments/assets/c990b669-de92-4010-a983-867b90ccf920" />
+<img width="548" height="353" alt="Screenshot 2026-09-27 at 3 06 09 PM" src="https://github.com/user-attachments/assets/c990b669-de92-4010-a983-867b90ccf920" />
 
-<img width="1098" height="353" alt="Screenshot 2026-09-27 at 3 06 37 PM" src="https://github.com/user-attachments/assets/5962f556-7fc5-4ce8-bcc2-1a82a1af6f03" />
+<img width="548" height="353" alt="Screenshot 2026-09-27 at 3 06 37 PM" src="https://github.com/user-attachments/assets/5962f556-7fc5-4ce8-bcc2-1a82a1af6f03" />
 
-<img width="1209" height="353" alt="Screenshot 2026-09-27 at 3 07 04 PM" src="https://github.com/user-attachments/assets/1c51fa83-3bb4-411d-8c86-c7af18a8b690" />
+<img width="548" height="353" alt="Screenshot 2026-09-27 at 3 07 04 PM" src="https://github.com/user-attachments/assets/1c51fa83-3bb4-411d-8c86-c7af18a8b690" />
 
 
 - **🌐 Direct In-Page Active Typing (IME)**: Type directly inside any website's `<input>`, `<textarea>`, or `contenteditable` (Facebook, WhatsApp Web, Gmail, YouTube, Google Docs, etc.) and it converts your Singlish to Sinhala Unicode live on the page!

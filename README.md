@@ -37,7 +37,7 @@ A fast, accurate, and modern Chrome Extension (Manifest V3) that converts **Sing
 4. Click the **"Load unpacked"** button in the top-left corner.
 5. Select this folder:
    ```
-   /Users/chinthaka/Documents/DEVELOPMENT/Chrome/SinhalaUniPro
+   ~/Documents/SinhalaUniPro
    ```
 6. **SinhalaUniPro** is now installed! Pin it to your Chrome toolbar for 1-click access.
 

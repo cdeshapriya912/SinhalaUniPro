@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="si" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SinhalaUniPro - Full Sinhala Unicode Editor</title>
+  <link rel="icon" type="image/png" href="icons/SinhalaUniPro.png">
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+  <div class="editor-layout">
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-left">
+        <div class="brand">
+          <img src="icons/SinhalaUniPro.png" alt="SinhalaUniPro Logo" class="logo-badge">
+          <div class="brand-text">
+            <span class="brand-name">SinhalaUni<span class="pro-tag">PRO</span></span>
+            <span class="brand-desc">Full Document Studio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-center">
+        <!-- Quick stats summary -->
+        <div class="stats-badge" id="doc-stats">0 words &bull; 0 characters</div>
+      </div>
+
+      <div class="nav-right">
+        <button id="btn-font-dec" class="tool-btn" title="Decrease font size">A-</button>
+        <button id="btn-font-inc" class="tool-btn" title="Increase font size">A+</button>
+        <div class="divider"></div>
+        <button id="btn-spell-toggle" class="btn btn-outline" title="Sinhala Spell Checker">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          Spell Check (<span id="editor-spell-count">0</span>)
+        </button>
+        <button id="btn-scheme-toggle" class="btn btn-outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          Scheme Guide
+        </button>
+        <button id="btn-download" class="btn btn-outline" title="Save as text file">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Export .txt
+        </button>
+        <button id="btn-copy-all" class="btn btn-primary" title="Copy entire Sinhala document">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span id="copy-all-text">Copy Sinhala</span>
+        </button>
+        <button id="btn-theme-toggle" class="icon-btn" title="Toggle Theme">
+          <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="theme-icon-moon" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace Split Pane -->
+    <div class="workspace">
+      <!-- Left Panel: Singlish -->
+      <section class="editor-pane input-pane">
+        <div class="pane-header">
+          <div class="pane-title">
+            <span class="dot input-dot"></span>
+            Singlish Input (Phonetic)
+          </div>
+          <div class="pane-actions">
+            <button id="btn-load-sample" class="text-btn">Load Sample</button>
+            <button id="btn-clear" class="text-btn text-btn-danger">Clear</button>
+          </div>
+        </div>
+        <div class="pane-body">
+          <textarea id="editor-input" placeholder="Type or paste your Singlish text here... real-time Sinhala Unicode translation will appear on the right side." spellcheck="false" autofocus></textarea>
+        </div>
+        <div class="pane-footer">
+          <span id="input-stats-detail">0 characters &bull; 0 lines</span>
+          <span class="draft-indicator" id="draft-status">Draft auto-saved</span>
+        </div>
+      </section>
+
+      <!-- Right Panel: Sinhala Unicode Output -->
+      <section class="editor-pane output-pane">
+        <div class="pane-header">
+          <div class="pane-title">
+            <span class="dot output-dot"></span>
+            Sinhala Unicode Output (සිංහල යුනිකෝඩ්)
+          </div>
+          <div class="pane-actions">
+            <button id="btn-copy-selection" class="text-btn">Copy Selection</button>
+          </div>
+        </div>
+        <div class="pane-body">
+          <textarea id="editor-output" placeholder="සිංහල යුනිකෝඩ් ප්‍රතිදානය මෙහි සජීවීව දිස්වේ..." spellcheck="false"></textarea>
+          <!-- Predictive Word Autocomplete Box (Light Theme, 4 Suggestions, Select by Number) -->
+          <div id="editor-prediction-box" class="prediction-box hidden">
+            <div class="pred-header">
+              <span class="pred-title">Word Suggestions</span>
+              <span class="pred-tip">Press 1-4 or Tab</span>
+            </div>
+            <div id="editor-pred-items-container" class="pred-items-container">
+              <!-- 4 suggestions dynamically rendered here -->
+            </div>
+          </div>
+        </div>
+        <div class="pane-footer">
+          <span id="output-stats-detail">0 Sinhala characters</span>
+          <span>Standard UCSC LTRL Encoding</span>
+        </div>
+      </section>
+
+      <!-- Collapsible Spell Check Sidebar -->
+      <aside id="spell-sidebar" class="scheme-sidebar collapsed">
+        <div class="sidebar-header">
+          <h3>Sinhala Spell Checker</h3>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <button id="btn-editor-fix-all" class="text-btn" style="color: #818cf8; font-weight: 600;" title="Auto fix all identified errors">Fix All</button>
+            <button id="btn-close-spell-sidebar" class="icon-btn">&times;</button>
+          </div>
+        </div>
+        <div class="sidebar-search">
+          <div id="editor-spell-summary" style="font-size: 12px; color: var(--text-secondary);">
+            Checking spelling...
+          </div>
+        </div>
+        <div class="sidebar-content" id="editor-spell-content" style="display: flex; flex-direction: column; gap: 8px;">
+          <!-- Dynamic Spell Cards -->
+        </div>
+      </aside>
+
+      <!-- Collapsible Scheme Sidebar -->
+      <aside id="scheme-sidebar" class="scheme-sidebar collapsed">
+        <div class="sidebar-header">
+          <h3>Transliteration Scheme</h3>
+          <button id="btn-close-sidebar" class="icon-btn">&times;</button>
+        </div>
+        <div class="sidebar-search">
+          <input type="text" id="scheme-search" placeholder="Search sounds, characters (e.g. kra, aa, \n)...">
+        </div>
+        <div class="sidebar-tabs">
+          <button class="side-tab active" data-tab="all">All</button>
+          <button class="side-tab" data-tab="vowels">Vowels</button>
+          <button class="side-tab" data-tab="consonants">Consonants</button>
+          <button class="side-tab" data-tab="specials">Auxiliaries</button>
+        </div>
+        <div class="sidebar-content" id="scheme-content">
+          <!-- Dynamic Scheme Cards -->
+        </div>
+      </aside>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">Copied to clipboard!</div>
+  </div>
+
+  <script src="converter.js"></script>
+  <script src="scheme_data.js"></script>
+  <script src="dictionary_data.js"></script>
+  <script src="spellchecker.js"></script>
+  <script src="editor.js"></script>
+</body>
+</html>

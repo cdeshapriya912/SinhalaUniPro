@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="si" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SinhalaUniPro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <img src="icons/SinhalaUniPro.png" alt="SinhalaUniPro Logo" class="logo-badge">
+        <div class="brand-text">
+          <div class="brand-title">SinhalaUni<span class="pro-tag">PRO</span></div>
+          <div class="brand-subtitle">UCSC LTRL Real-Time Unicode</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-spell-toggle" class="icon-btn" title="Sinhala Spell Checker">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          <span class="btn-label" id="header-spell-label">Spell Check</span>
+        </button>
+        <button id="btn-scheme-toggle" class="icon-btn" title="Transliteration Scheme (Ctrl+/)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span class="btn-label">Scheme</span>
+        </button>
+        <button id="btn-history-toggle" class="icon-btn" title="Recent History">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </button>
+        <button id="btn-open-editor" class="icon-btn" title="Open Full Editor in New Tab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </button>
+        <button id="btn-theme-toggle" class="icon-btn" title="Toggle Dark/Light Mode">
+          <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="theme-icon-moon" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Webpage Direct Typing Bar -->
+    <div class="inline-mode-bar">
+      <div class="inline-mode-info">
+        <span class="inline-status-dot active" id="inline-dot"></span>
+        <span class="inline-mode-title">Webpage Typing:</span>
+        <span class="inline-mode-status" id="inline-status-text">Sinhala Mode (⌥S / Alt+S)</span>
+      </div>
+      <label class="switch" title="Toggle Direct Typing on Webpages (Option+S on Mac / Alt+S on Windows)">
+        <input type="checkbox" id="toggle-inline-typing" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <!-- Quick Keystroke Cheat Pills -->
+    <div class="quick-hints">
+      <span class="hint-tag" data-insert="aayubowan">aayubowan &rarr; ආයුබොවන්</span>
+      <span class="hint-tag" data-insert="shrii">shrii &rarr; ශ්‍රී</span>
+      <span class="hint-tag" data-insert="R">R &rarr; ර්‍</span>
+      <span class="hint-tag" data-insert="Y">Y &rarr; ්‍ය</span>
+      <span class="hint-tag" data-insert="\n">\n &rarr; ං</span>
+      <span class="hint-tag" data-insert="kr">kr &rarr; ක්‍ර</span>
+    </div>
+
+    <!-- Main Converter Workspace -->
+    <main class="converter-box">
+      <!-- Singlish Input Card -->
+      <div class="card input-card">
+        <div class="card-header">
+          <span class="card-label">Singlish Phonetic (ඉංග්‍රීසි අකුරින්)</span>
+          <div class="card-header-actions">
+            <button id="btn-sample" class="text-btn" title="Try a sample sentence">Sample</button>
+            <button id="btn-clear" class="text-btn text-btn-danger" title="Clear input (Esc)">Clear</button>
+          </div>
+        </div>
+        <div class="textarea-wrapper">
+          <textarea id="singlish-input" rows="4" placeholder="Type Singlish here... e.g. mama sinhala igena gannavaa" autofocus spellcheck="false"></textarea>
+        </div>
+        <div class="card-footer">
+          <div class="stats" id="input-stats">0 chars &bull; 0 words</div>
+          <div class="shortcut-tip">Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> to copy</div>
+        </div>
+      </div>
+
+      <!-- Sinhala Output Card -->
+      <div class="card output-card">
+        <div class="card-header">
+          <span class="card-label highlight">Sinhala Unicode (සිංහල යුනිකෝඩ්)</span>
+          <div class="card-header-actions">
+            <button id="btn-copy" class="btn btn-primary" title="Copy converted Sinhala Unicode text">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copy-btn-text">Copy Unicode</span>
+            </button>
+          </div>
+        </div>
+        <div class="textarea-wrapper">
+          <textarea id="sinhala-output" rows="4" placeholder="සිංහල යුනිකෝඩ් පරිවර්තනය මෙහි දිස්වේ..." spellcheck="false"></textarea>
+        </div>
+        <!-- Predictive Word Autocomplete Box (Light Theme, 4 Suggestions, Select by Number) -->
+        <div id="prediction-box" class="prediction-box hidden">
+          <div class="pred-header">
+            <span class="pred-title">Word Suggestions</span>
+            <span class="pred-tip">Press 1-4 or Tab</span>
+          </div>
+          <div id="pred-items-container" class="pred-items-container">
+            <!-- 4 suggestions dynamically rendered here -->
+          </div>
+        </div>
+        <!-- Live Spellcheck Suggestions Bar -->
+        <div id="spell-status-bar" class="spell-status-bar hidden">
+          <div class="spell-status-info">
+            <span class="spell-icon">⚠️</span>
+            <span id="spell-status-text">Spelling suggestions available</span>
+          </div>
+          <button id="btn-spell-view" class="text-btn text-btn-accent">Review Fixes</button>
+        </div>
+        <div class="card-footer">
+          <div class="stats" id="output-stats">0 chars</div>
+          <div class="action-links">
+            <button id="btn-download" class="text-btn" title="Download as text file">Download .txt</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Spell Checker Drawer -->
+    <aside id="spell-drawer" class="drawer hidden">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          Sinhala Spell Checker
+        </div>
+        <div class="drawer-header-actions">
+          <button id="btn-auto-fix-all" class="text-btn text-btn-accent" title="Auto fix all known misspellings">Fix All</button>
+          <button id="btn-close-spell" class="icon-btn">&times;</button>
+        </div>
+      </div>
+      <div class="spell-stats-summary" id="spell-stats-summary">
+        Checking text...
+      </div>
+      <div class="drawer-content" id="spell-content">
+        <!-- Rendered via JS -->
+      </div>
+    </aside>
+
+    <!-- Transliteration Scheme Drawer -->
+    <aside id="scheme-drawer" class="drawer hidden">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          UCSC Transliteration Scheme
+        </div>
+        <button id="btn-close-scheme" class="icon-btn" title="Close scheme">
+          &times;
+        </button>
+      </div>
+      <div class="drawer-search">
+        <input type="text" id="scheme-search" placeholder="Search letter or key (e.g. aa, th, dh, R)...">
+      </div>
+      <div class="drawer-tabs">
+        <button class="tab-btn active" data-tab="all">All</button>
+        <button class="tab-btn" data-tab="vowels">Vowels (ස්වර)</button>
+        <button class="tab-btn" data-tab="consonants">Consonants (ව්‍යංජන)</button>
+        <button class="tab-btn" data-tab="specials">Auxiliaries (විශේෂ)</button>
+      </div>
+      <div class="drawer-content" id="scheme-content">
+        <!-- Rendered via JS -->
+      </div>
+    </aside>
+
+    <!-- History Drawer -->
+    <aside id="history-drawer" class="drawer hidden">
+      <div class="drawer-header">
+        <div class="drawer-title">Recent Conversions</div>
+        <div class="drawer-header-actions">
+          <button id="btn-clear-history" class="text-btn text-btn-danger">Clear</button>
+          <button id="btn-close-history" class="icon-btn">&times;</button>
+        </div>
+      </div>
+      <div class="drawer-content" id="history-content">
+        <div class="empty-state">No recent conversions yet. Start typing!</div>
+      </div>
+    </aside>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">Copied to clipboard!</div>
+  </div>
+
+  <script src="converter.js"></script>
+  <script src="scheme_data.js"></script>
+  <script src="dictionary_data.js"></script>
+  <script src="spellchecker.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

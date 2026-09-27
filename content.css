@@ -1,0 +1,206 @@
+/* SinhalaUniPro - In-Page Typing Badge Styles */
+#sinhala-uni-pro-badge {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 2147483647 !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.45), 0 2px 6px -1px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 24px !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+#sinhala-uni-pro-badge.sup-badge-hidden {
+  opacity: 0 !important;
+  transform: translateY(12px) scale(0.92) !important;
+  pointer-events: none !important;
+}
+
+.sup-badge-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 14px 6px 10px !important;
+}
+
+.sup-badge-icon {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #ffffff !important;
+}
+
+.sup-badge-text {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.2px !important;
+}
+
+.sup-badge-shortcut {
+  font-size: 10px !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  font-weight: 600 !important;
+  margin-left: 2px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Active Sinhala Mode */
+#sinhala-uni-pro-badge.sup-badge-si {
+  background: rgba(15, 23, 42, 0.85) !important;
+  color: #f8fafc !important;
+}
+
+#sinhala-uni-pro-badge.sup-badge-si .sup-badge-icon {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%) !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.5) !important;
+}
+
+#sinhala-uni-pro-badge.sup-badge-si .sup-badge-text {
+  color: #38bdf8 !important;
+}
+
+/* English Passthrough Mode */
+#sinhala-uni-pro-badge.sup-badge-en {
+  background: rgba(30, 41, 59, 0.85) !important;
+  color: #94a3b8 !important;
+}
+
+#sinhala-uni-pro-badge.sup-badge-en .sup-badge-icon {
+  background: #475569 !important;
+}
+
+#sinhala-uni-pro-badge.sup-badge-en .sup-badge-text {
+  color: #cbd5e1 !important;
+}
+
+/* Disabled */
+#sinhala-uni-pro-badge.sup-badge-disabled {
+  background: rgba(23, 23, 23, 0.8) !important;
+  color: #737373 !important;
+}
+
+#sinhala-uni-pro-badge.sup-badge-disabled .sup-badge-icon {
+  background: #dc2626 !important;
+}
+
+#sinhala-uni-pro-badge:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.55) !important;
+}
+
+#sinhala-uni-pro-badge:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+/* Floating Prediction Suggestion Box - Clean Modern Light Theme */
+.sup-pred-popup {
+  position: absolute !important;
+  z-index: 2147483647 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  padding: 6px 8px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.18), 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.08) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 13px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  min-width: 220px !important;
+  max-width: 320px !important;
+  border: 1px solid #e2e8f0 !important;
+  transition: opacity 0.15s ease, transform 0.15s ease !important;
+}
+
+.sup-pred-popup.sup-pred-hidden {
+  opacity: 0 !important;
+  transform: translateY(6px) scale(0.95) !important;
+  pointer-events: none !important;
+}
+
+.sup-pred-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 2px 4px 4px !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+.sup-pred-title {
+  font-size: 10px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  color: #6366f1 !important;
+  font-weight: 700 !important;
+}
+
+.sup-pred-tip {
+  font-size: 9.5px !important;
+  color: #94a3b8 !important;
+  font-weight: 600 !important;
+}
+
+.sup-pred-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+.sup-pred-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: background 0.12s ease !important;
+}
+
+.sup-pred-item:hover, .sup-pred-item.sup-pred-active {
+  background: #f1f5f9 !important;
+}
+
+.sup-pred-num {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 4px !important;
+  background: #e0e7ff !important;
+  color: #4338ca !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid #c7d2fe !important;
+  flex-shrink: 0 !important;
+}
+
+.sup-pred-word {
+  font-family: 'Iskoola Pota', 'Noto Sans Sinhala', -apple-system, sans-serif !important;
+  font-size: 14.5px !important;
+  line-height: 1.4 !important;
+}
+
+.sup-pred-prefix {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+/* Gray color for prediction suffix completion */
+.sup-pred-suffix {
+  color: #64748b !important;
+  font-weight: 500 !important;
+}
+

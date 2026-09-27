@@ -1,5 +1,7 @@
 # SinhalaUniPro - Real-Time Sinhala Unicode Converter Chrome Extension
 
+<img width="548" height="353" alt="Unicode Sinhala" src="https://github.com/user-attachments/assets/3248415f-3991-4233-866e-f31182debe32" />
+
 A fast, accurate, and modern Chrome Extension (Manifest V3) that converts **Singlish (phonetic English typing) into Sinhala Unicode** in real time, built strictly according to the **University of Colombo School of Computing (UCSC) Language Technology Research Laboratory (LTRL)** standard.
 
 ---
